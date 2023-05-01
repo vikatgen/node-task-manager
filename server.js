@@ -8,14 +8,12 @@ const TasksRouter = require("./routes/tasks");
 app.use(express.json());
 app.use("/api/v1/tasks", TasksRouter);
 
-const PORT = 4000;
-
 const start = async () => {
     try {
         await connectDB(process.env.MONGO_URL);
 
-        app.listen(PORT, () => {
-            console.log(`Server listening on port ${PORT}`);
+        app.listen(process.env.PORT || 4000, () => {
+            console.log(`Server listening on port ${process.env.PORT}`);
         });
     } catch (error) {
         console.log(error);
